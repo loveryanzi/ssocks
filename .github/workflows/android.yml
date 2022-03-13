@@ -34,6 +34,9 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build
       
+    - name: Echo
+      run: echo cmake -B ${{github.workspace}}/build -DANDROID_ABI=${{env.NDK_BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE=${{env.NDK_PATH}}/${{env.NDK_VERSION}}/build/cmake/android.toolchain.cmake
+          
     - name: Pack artifact
       uses: actions/upload-artifact@v2
       with:
